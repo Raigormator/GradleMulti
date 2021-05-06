@@ -1,0 +1,13 @@
+dependencies {
+	implementation project(':core')
+}
+
+jar {
+	manifest {
+		attributes('Main-Class' : 'com.gradle.multi.SayHello')
+	}
+
+	from {
+	    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  	}
+}
